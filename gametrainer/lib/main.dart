@@ -94,6 +94,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     const Padding(padding: EdgeInsets.all(20)),
                     ElevatedButton(
                       onPressed: _goToMainMenu, 
+                      style: ElevatedButton.styleFrom
+                      (
+                       //backgroundColor: Color.fromARGB(255, 216, 188, 252),
+                        textStyle: const TextStyle(
+                          fontSize: 30,
+                        )
+                      ),
                       child: const Text(
                         'Iniciar Sesion'
                       )

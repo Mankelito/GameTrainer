@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
-  runApp(const Profile());
+  runApp(const Routine());
 }
 
-class Profile extends StatelessWidget {
-  const Profile({super.key});
+class Routine extends StatelessWidget {
+  const Routine({super.key});
 
   // This widget is the root of your application.
   @override

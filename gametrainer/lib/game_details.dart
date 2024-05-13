@@ -2,40 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'main.dart';
 
-class GameDetails extends StatelessWidget {
-  const GameDetails({super.key});
 
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'List of games'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class MyGames extends StatefulWidget {
+  const MyGames({super.key, required this.title});
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -49,12 +18,13 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyGames> createState() => _MyGamesState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyGamesState extends State<MyGames> {
 
-  String gameicon = 'assets/images/default_user.svg';
+  String gameicon = 'assets/images/minecraft-1.svg';
+  String gameicon2 = 'assets/images/valorant-1.svg';
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -71,29 +41,78 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MyApp()),
-                );
-              }, // Image tapped
-              child: SvgPicture.asset(
-                gameicon,
-                fit: BoxFit.cover, // Fixes border issues
-                width: 110.0,
-                height: 110.0,
+          children: [
+            Expanded(
+              child: ListView(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      final scaffold = ScaffoldMessenger.of(context);
+                      scaffold.showSnackBar(
+                        SnackBar(
+                          behavior: SnackBarBehavior.floating,
+                          content: const Text('Minecraft ha sido pulsado'),
+                          action: SnackBarAction(label: 'OK', onPressed: scaffold.hideCurrentSnackBar),
+                        ),
+                      );
+                    },
+                    child: Center(
+                      child: SvgPicture.asset(
+                        gameicon,
+                        fit: BoxFit.fill,
+                        width: 110.0,
+                        height: 110.0,
+                      ),
+                    )
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      final scaffold = ScaffoldMessenger.of(context);
+                      scaffold.showSnackBar(
+                        SnackBar(
+                          behavior: SnackBarBehavior.floating,
+                          content: const Text('Valorant ha sido pulsado'),
+                          action: SnackBarAction(label: 'OK', onPressed: scaffold.hideCurrentSnackBar),
+                        ),
+                      );
+                    },
+                    child: Center(
+                      child: SvgPicture.asset(
+                        gameicon2,
+                        fit: BoxFit.fill, // Fixes border issues
+                        width: 110.0,
+                        height: 110.0,
+                      ),
+                    )
+                  ),
+                ],
               ),
             ),
-            const Text(
-              'You have pushed the button this many times:',
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  child: ElevatedButton(
+                    onPressed: () 
+                    {
+                      Navigator.pop(context);
+                    },
+                    style: ElevatedButton.styleFrom
+                    (
+                      //backgroundColor: Color.fromARGB(255, 216, 188, 252),
+                      textStyle: const TextStyle(
+                        fontSize: 30,
+                        )
+                    ),
+                    child: const Text(
+                      'Volver',
+                    ),
+                  ),
+                ),
+                const Padding(padding: EdgeInsets.only(bottom: 100)),
+              ]
             ),
-            Text(
-              'a',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+          ]
         ),
       ),
     );

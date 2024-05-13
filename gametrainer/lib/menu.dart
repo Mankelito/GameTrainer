@@ -3,8 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gametrainer/main.dart';
 import 'game_details.dart';
-import 'profile.dart';
-import 'routine.dart';
+import 'routineValorant.dart';
 import 'user.dart';
 
 class MainMenu extends StatelessWidget {
@@ -65,22 +64,14 @@ class _MyHomeMenu extends State<MyHomeMenu> {
   {
     Navigator.push(
     context,
-    MaterialPageRoute(builder: (context) => const GameDetails()),
-    );
-  }
-
-  void _goToProfile()
-  {
-    Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => const Profile()),
+    MaterialPageRoute(builder: (context) => const MyGames(title: 'Juegos',)),
     );
   }
   void _goToRoutine()
   {
     Navigator.push(
     context,
-    MaterialPageRoute(builder: (context) => const GameDetails()),
+    MaterialPageRoute(builder: (context) => const Routine()),
     );
   }
 
@@ -88,7 +79,7 @@ class _MyHomeMenu extends State<MyHomeMenu> {
   {
     Navigator.push(
     context,
-    MaterialPageRoute(builder: (context) => const Profile()),
+    MaterialPageRoute(builder: (context) => const User(title: 'Usuario',)),
     );
   }
 
@@ -126,33 +117,40 @@ class _MyHomeMenu extends State<MyHomeMenu> {
               ),
               ElevatedButton(
                 onPressed: _goToGameDetails, 
+                style: ElevatedButton.styleFrom
+                (
+                  textStyle: const TextStyle
+                  (
+                    fontSize: 25,
+                  )
+                ),
                 child: const Text(
-                  'Detalles del juego'
-                )
-              ),
-              const Padding(padding: EdgeInsets.all(10)),
-              ElevatedButton(
-                onPressed: _goToProfile, 
-                child: const Text(
-                  'Perfil de Usuario'
-                )
-              ),
-              const Padding(padding: EdgeInsets.all(10)),
-              ElevatedButton(
-                onPressed: _goToRoutine, 
-                child: const Text(
-                  'Detalle de rutina'
+                  'Juegos'
                 )
               ),
               const Padding(padding: EdgeInsets.all(10)),
               ElevatedButton(
                 onPressed: _goToUser, 
+                style: ElevatedButton.styleFrom
+                (
+                  textStyle: const TextStyle
+                  (
+                    fontSize: 25,
+                  )
+                ),
                 child: const Text(
                   'Usuario'
                 )
               ),
               const Padding(padding: EdgeInsets.all(10)),
               ElevatedButton(
+                style: ElevatedButton.styleFrom
+                (
+                  textStyle: const TextStyle
+                  (
+                    fontSize: 25,
+                  )
+                ),
                 onPressed: () => Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const MyApp()),
