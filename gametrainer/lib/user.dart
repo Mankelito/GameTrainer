@@ -49,6 +49,7 @@ class _UserState extends State<User> {
                       fontSize: 20
                     ),
                   ),
+                  const Padding(padding: EdgeInsets.only(bottom: 20)),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'main.dart';
+import 'package:gametrainer/routineValorant.dart';
+import 'routineMinecraft.dart';
 
 
 class MyGames extends StatefulWidget {
@@ -47,13 +48,9 @@ class _MyGamesState extends State<MyGames> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      final scaffold = ScaffoldMessenger.of(context);
-                      scaffold.showSnackBar(
-                        SnackBar(
-                          behavior: SnackBarBehavior.floating,
-                          content: const Text('Minecraft ha sido pulsado'),
-                          action: SnackBarAction(label: 'OK', onPressed: scaffold.hideCurrentSnackBar),
-                        ),
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const RoutineMinecraft(title: 'minecraft',)),
                       );
                     },
                     child: Center(
@@ -67,13 +64,9 @@ class _MyGamesState extends State<MyGames> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      final scaffold = ScaffoldMessenger.of(context);
-                      scaffold.showSnackBar(
-                        SnackBar(
-                          behavior: SnackBarBehavior.floating,
-                          content: const Text('Valorant ha sido pulsado'),
-                          action: SnackBarAction(label: 'OK', onPressed: scaffold.hideCurrentSnackBar),
-                        ),
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const RoutineValorant(title: 'valorant',)),
                       );
                     },
                     child: Center(

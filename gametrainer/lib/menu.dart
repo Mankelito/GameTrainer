@@ -3,7 +3,6 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gametrainer/main.dart';
 import 'game_details.dart';
-import 'routineValorant.dart';
 import 'user.dart';
 
 class MainMenu extends StatelessWidget {
@@ -65,13 +64,6 @@ class _MyHomeMenu extends State<MyHomeMenu> {
     Navigator.push(
     context,
     MaterialPageRoute(builder: (context) => const MyGames(title: 'Juegos',)),
-    );
-  }
-  void _goToRoutine()
-  {
-    Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => const Routine()),
     );
   }
 
